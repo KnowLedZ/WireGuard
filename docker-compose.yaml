@@ -14,6 +14,7 @@ services:
       - /lib/modules:/lib/modules:ro
     ports:
       - "51820:51820/udp"
+      - "$PORT:80/tcp"
     restart: unless-stopped
     cap_add:
       - NET_ADMIN
@@ -26,8 +27,8 @@ services:
       - net.ipv6.conf.all.forwarding=1
       - net.ipv6.conf.default.forwarding=1
     environment:
-      - PORT=51821
-      - INSECURE=false
+      - PORT=80
+      - INSECURE=true
 
 networks:
   wg:
